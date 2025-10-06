@@ -1,0 +1,122 @@
+    // 00 01 02 03
+    // 10 11 12 13
+    // 20 21 22 23
+    // 30 31 32 33
+    
+#include <iostream>
+using namespace std;
+
+
+int a[10][10],dimensiune,S;
+
+void diagonala()
+{
+    for (int i=0;i<dimensiune;i++) {
+        for (int p=0;p<dimensiune;p++) {
+            if(i==p) {
+                S+=a[i][p];
+        }
+        }
+    }
+    cout<<"Suma elementelor diagonalei principale este :"<<S<<endl;
+    
+    
+}
+
+
+void diagonalasec()
+{
+    for (int i=0;i<dimensiune;i++) {
+        for (int j=0;j<dimensiune;j++) {
+            if (i+j==dimensiune - 1) {
+                cout<<a[i][j]<<" ";
+            }
+    }
+}
+}
+
+
+void citire(int n) 
+{
+    dimensiune = n;
+    for (int i=0;i<n;i++) {
+        for (int j=0;j<n;j++) {
+            cout<<"a["<<i<<"]["<<j<<"]=";
+            cin>>a[i][j];
+        }
+    }
+    
+}
+
+
+void afisare()
+{
+    for (int i=0;i<dimensiune;i++) {
+        for (int j=0;j<dimensiune;j++) {
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+    cout<<endl;
+}
+
+
+void exterior()
+{
+    int p,o=1,u=1;
+    cout<<"Elementele exterioare sunt:"<<endl;
+    for (int i=0;i<dimensiune;i++)
+    {
+        for (int j=0;j<dimensiune;j++)
+        {
+            if ( i==0 || j==dimensiune-1 || j==0 || i==dimensiune-1)
+            {
+                cout<<a[i][j]<<" ";
+            }
+            else
+            {
+                cout<<"  ";
+            }
+            
+        }
+        cout<<endl;
+    }
+    
+}
+
+
+void del(int x, int y)
+{
+    a[x][y]=0;
+}
+
+void alegereelement()
+{
+    cout<<"Cate elemente vreti sa eliminati?";
+    int numar,index1,index2;
+    cin>>numar;
+    cout<<"De pe ce pozitie sa fie sterse?";
+    while (numar !=0)
+    {
+        cout<<"De pe ce pozitie sa fie sterse?";
+        cin>>index1>>index2;
+        del(index1, index2);
+        numar--;
+    }
+}
+
+int main()
+{
+    citire(3);
+    afisare();
+    diagonala();
+    diagonalasec();
+    cout<<endl;
+    // exterior();
+    cout<<endl;
+    alegereelement();
+    afisare();
+    
+    return 0;
+}
